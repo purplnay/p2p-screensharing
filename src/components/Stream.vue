@@ -58,6 +58,8 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  stream.value?.getTracks().forEach((track) => track.stop())
+
   peer.off('call')
   connectionToPeer.value?.off('data', onData)
 })
