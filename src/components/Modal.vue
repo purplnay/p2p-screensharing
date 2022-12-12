@@ -13,7 +13,7 @@ defineEmits<{
     <Transition appear @after-leave="$emit('hidden')">
       <div
         v-if="show"
-        class="backdrop w-screen h-screen absolute top-0 left-0 z-50 flex items-center justify-center">
+        class="backdrop w-screen h-screen overflow-hidden absolute top-0 left-0 z-50 flex items-center justify-center">
         <section
           class="content bg-slate-800 px-6 py-4 rounded shadow-lg w-[90%] max-w-lg">
           <slot></slot>
