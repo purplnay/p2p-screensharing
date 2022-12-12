@@ -21,6 +21,30 @@ const id = computed(() => {
 
 const isHost = computed(() => id.value === peerId.value)
 
+// Ping to detect broken connections
+const lastPing = ref(Date.now())
+const interval = setInterval(() => {
+  connectionToPeer.value?.send('ping')
+
+  if (lastPing.value < Date.now() - 7000) {
+    connectionToPeer.value?.close()
+  }
+}, 5000)
+
+onMounted(() => {
+  // Update ping value
+  connectionToPeer.value?.on('data', (data) => {
+    if (data === 'ping') {
+      lastPing.value = Date.now()
+    }
+  })
+})
+
+onUnmounted(() => {
+  clearInterval(interval)
+  connectionToPeer.value?.off('data')
+})
+
 // Reject other conenctions and calls
 onMounted(() => {
   peer.on('connection', (connection) => {
