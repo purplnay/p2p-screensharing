@@ -159,7 +159,9 @@ function sendMessage() {
 }
 
 #chat-container {
-  scrollbar-color: blue;
   scrollbar-width: 5px;
+  --tw-bg-opacity: 1;
+  scrollbar-color: rgb(51 65 85 / var(--tw-bg-opacity));
+  scrollbar-track-color: rgb(15 23 42 / var(--tw-bg-opacity));
 }
 </style>
