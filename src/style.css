@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply w-screen h-screen bg-slate-800 text-slate-100;
+    @apply bg-slate-800 text-slate-100;
   }
 
   #app {
